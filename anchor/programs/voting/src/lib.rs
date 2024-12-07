@@ -82,7 +82,7 @@ pub struct Vote<'info> {
   )]
   pub poll: Account<'info, Poll>,
   #[account(
-    mut,
+    mut, //Without this mut, voting will not actually update as Solana accounts are immutable by default even if in function its marked as mut
     seeds = [poll_id.to_le_bytes().as_ref(), candidate_name.as_bytes().as_ref()],
     bump
   )]
