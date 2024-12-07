@@ -76,6 +76,18 @@ describe('voting', () => {
   })
 
   it('vote', async() => {
+    await votingProgram.methods.vote(
+      "Crunchy",
+      new anchor.BN(1)
+    ).rpc();
 
+    const [crunchyAddress] = PublicKey.findProgramAddressSync(
+      [new anchor.BN(1).toArrayLike(Buffer, 'le', 8), Buffer.from("Crunchy")],
+      votingAddress
+    );
+    const crunchyCandidate = await votingProgram.account.candidate.fetch(crunchyAddress);
+    console.log(crunchyCandidate);
+    expect(crunchyCandidate.candidateVotes.toNumber()).toEqual(1);
+    expect(crunchyCandidate.candidateName).toEqual("Crunchy");
   })
 })
