@@ -1,6 +1,6 @@
-import * as anchor from '@coral-xyz/anchor'
-import {Program} from '@coral-xyz/anchor'
-import {Keypair, PublicKey} from '@solana/web3.js'
+import * as anchor from '@coral-xyz/anchor';
+import {Program} from '@coral-xyz/anchor';
+import {PublicKey} from '@solana/web3.js';
 import { Voting } from 'anchor/target/types/voting';
 import { BankrunProvider, startAnchor } from "anchor-bankrun";
 const IDL = require("/Users/icarus/Desktop/Code/solana/voting-dapp/anchor/target/idl/voting.json");
